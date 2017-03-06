@@ -1,0 +1,68 @@
+﻿.row-s{
+    margin: 0px -7px !important;
+}
+
+.col-s{
+    padding: 0px 7px !important;
+}
+
+.item-card {
+    padding: 10px;
+    height: 400px;
+    margin-bottom: 14px;
+}
+.care-list ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.care-list button{
+    background: transparent;
+    border: 1px solid #ccc;
+        background: #1FBDF1;
+    background: -webkit-linear-gradient(to left, #1FBDF1, #39DFA5);
+    background: linear-gradient(to left, #1FBDF1, #39DFA5);
+    color: white;
+}
+
+.item-card h3{
+    font-size: 20px;
+}
+
+.item-card h2{
+    font-size: 24px;
+}
+
+.item-card p{
+    margin-bottom: 5px;
+}
+
+.company p {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.company span{
+    color: #ccc;
+    font-size: 12px;
+}
+
+.list-profile{
+    margin: 14px 0px;
+}
+
+.img-avatar img {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 10px;
+}
+
+.app-header ul{
+    padding: 0px 20px;
+}
+
+.app-header ul li{
+    padding: 0px 5px;
+}
