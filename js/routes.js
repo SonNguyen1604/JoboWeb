@@ -135,10 +135,22 @@ angular
         templateUrl: 'views/auth/seekerLogin.html',
         controller: 'seekerLoginCtrl'
     })
-    .state('appSimple.register', {
-        url: '/register',
-        templateUrl: 'views/pages/register.html'
+    .state('appSimple.signup', {
+        url: '/seekersignup',
+        templateUrl: 'views/signup/seeker/seekerSignup.html',
+        controller: 'seekerSignupCtrl'
     })
+        .state('appSimple.signupphone', {
+            url: '/seekersignupphone',
+            templateUrl: 'views/signup/seeker/seekerPhone.html',
+            controller: 'seekerSignupCtrl',
+        })
+
+        .state('appSimple.seekersignupinfo', {
+            url: '/seekersignupinfo',
+            templateUrl: 'views/signup/seeker/seekersignupinfo.html',
+            controller: 'seekerSignupCtrl',
+        })
     .state('appSimple.404', {
         url: '/404',
         templateUrl: 'views/pages/404.html'

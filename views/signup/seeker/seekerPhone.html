@@ -1,0 +1,25 @@
+﻿<div class="app flex-row align-items-center animated fadeIn">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mx-2">
+                    <div class="card-block p-2">
+                        <h1>Số điện thoại</h1>
+                        <p class="text-muted">Tips: Điền chính xác số điện thoại để nhận tin nhắn</p>
+
+                        <form name="signupForm" ng-submit="doUpdate(userSignup)">
+                            <div class="input-group mb-1">
+                                <span class="input-group-addon">
+                                    <i class="icon-phone"></i>
+                                </span>
+                                <input type="text" class="form-control" placeholder="VD: 0968269860" ng-model="userSignup.phone" id="phone">
+                            </div>
+                            <button type="submit" class="btn btn-block btn-success main-backgroud">Cập nhật số điện thoại</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

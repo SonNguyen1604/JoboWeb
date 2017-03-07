@@ -66,3 +66,40 @@
 .app-header ul li{
     padding: 0px 5px;
 }
+
+.loader {
+    border: 15px solid #f3f3f3; /* Light grey */
+    border-top: 15px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.regis-link {
+    color: white;
+    display: inline-block;
+    background: #1985ac;
+    padding: 5px 15px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+.regis-link:hover{
+    color: white;
+}
+
+.main-backgroud{
+    background: #1FBDF1;
+    background: -webkit-linear-gradient(to left, #1FBDF1, #39DFA5);
+    background: linear-gradient(to left, #1FBDF1, #39DFA5);
+}
