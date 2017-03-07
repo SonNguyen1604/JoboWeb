@@ -1,0 +1,53 @@
+﻿<div class="app flex-row align-items-center animated fadeIn">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mx-2">
+                    <div class="card-block p-2">
+                        <h1>Số điện thoại</h1>
+                        <p class="text-muted">Tips: Điền chính xác số điện thoại để nhận tin nhắn</p>
+
+                        <form name="signupForm" ng-submit="doUpdate(userInfo)">
+                            <div class="input-group mb-1">
+                                <span class="input-group-addon">
+                                    <i class="icon-phone"></i>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Trường đã/đang học" ng-model="userInfo.school">
+                            </div>
+
+                            <div class="input-group mb-1">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                                <input type="text" class="form-control" ng-model="date" ui-mask="99/99/9999">
+                            </div>
+
+                            <div class="input-group mb-1">
+                                <span class="input-group-addon">
+                                    <i class="icon-phone"></i>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Địa chỉ" ng-model="userInfo.address">
+                            </div>
+
+                            <div class="input-group mb-1">
+                                <span class="input-group-addon">
+                                    <i class="icon-phone"></i>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Trường đã/đang học" ng-model="userInfo.school">
+                            </div>
+
+                            <div class="input-group mb-1">
+                                <span class="input-group-addon">
+                                    <i class="icon-phone"></i>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Trường đã/đang học" ng-model="userInfo.school">
+                            </div>
+                            <button type="submit" class="btn btn-block btn-success main-backgroud">Hoàn tất</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
