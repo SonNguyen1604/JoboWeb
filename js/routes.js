@@ -140,17 +140,47 @@ angular
         templateUrl: 'views/signup/seeker/seekerSignup.html',
         controller: 'seekerSignupCtrl'
     })
-        .state('appSimple.signupphone', {
-            url: '/seekersignupphone',
-            templateUrl: 'views/signup/seeker/seekerPhone.html',
-            controller: 'seekerSignupCtrl',
-        })
+    .state('appSimple.signupinfo', {
+        url: '/seekersignupinfo',
+        templateUrl: 'views/signup/seeker/seekersignupinfo.html',
+        controller: 'seekerSignupCtrl',
+        resolve: {
+            loadPlugin: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                  {
+                      serie: true,
+                      files: ['bower_components/moment/min/moment.min.js']
+                  },
+                  {
+                      serie: true,
+                      files: [
+                        'bower_components/bootstrap-daterangepicker/daterangepicker.js',
+                        'bower_components/angular-daterangepicker/js/angular-daterangepicker.min.js'
+                      ]
+                  },
+                  {
+                      files: ['bower_components/angular-ui-mask/dist/mask.min.js']
+                  },
+                  {
+                      files: ['bower_components/angular-ui-select/dist/select.min.js']
+                  }
+                ]);
+            }],
+            //loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+            //    return $ocLazyLoad.load({
+            //        files: ['views/signup/seeker/seekerSignupCtrl.js']
+            //    });
+            //}]
+        }
+    })
 
-        .state('appSimple.seekersignupinfo', {
-            url: '/seekersignupinfo',
-            templateUrl: 'views/signup/seeker/seekersignupinfo.html',
-            controller: 'seekerSignupCtrl',
-        })
+    .state('appSimple.jobfast', {
+        url: '/jobfast',
+        templateUrl: 'views/joblist/joblist.html',
+        controller: 'joblistCtrl',
+    })
+
+
     .state('appSimple.404', {
         url: '/404',
         templateUrl: 'views/pages/404.html'
@@ -160,74 +190,4 @@ angular
         templateUrl: 'views/pages/500.html'
     })
 
-    //UI Kits
-    .state('app.uikits', {
-        abstract: true,
-        template: '<ui-view></ui-view>',
-        ncyBreadcrumb: {
-            label: 'UI Kits'
-        }
-    })
-
-    //UI Kits - Invoicing App
-    .state('app.uikits.invoicing', {
-        abstract: true,
-        template: '<ui-view></ui-view>',
-        ncyBreadcrumb: {
-            label: 'Invoicing'
-        }
-    })
-    .state('app.uikits.invoicing.invoice', {
-        url: '/uikits/invoicing/invoice',
-        templateUrl: 'views/UIkits/invoicing/invoice.html',
-        ncyBreadcrumb: {
-            label: '{{ "INVOICE" | translate }}'
-        }
-    })
-
-    //UI Kits - Email App
-    .state('app.uikits.email', {
-        abstract: true,
-        template: '<ui-view></ui-view>',
-        ncyBreadcrumb: {
-            label: 'Email'
-        }
-    })
-    .state('app.uikits.email.inbox', {
-        url: '/uikits/email/inbox',
-        templateUrl: 'views/UIkits/email/inbox.html',
-        ncyBreadcrumb: {
-            label: '{{ "INBOX" | translate }}'
-        }
-    })
-    .state('app.uikits.email.message', {
-        url: '/uikits/email/message',
-        templateUrl: 'views/UIkits/email/message.html',
-        ncyBreadcrumb: {
-            label: '{{ "INBOX" | translate }}'
-        }
-    })
-    .state('app.uikits.email.compose', {
-        url: '/uikits/email/compose',
-        templateUrl: 'views/UIkits/email/compose.html',
-        ncyBreadcrumb: {
-            label: '{{ "INBOX" | translate }}'
-        },
-        resolve: {
-            loadPlugin: ['$ocLazyLoad', function ($ocLazyLoad) {
-                // you can lazy load files for an existing module
-                return $ocLazyLoad.load([
-                  {
-                      files: ['js/libs/select.min.js']
-                  }
-                ]);
-            }],
-            loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                // you can lazy load controllers
-                return $ocLazyLoad.load({
-                    files: ['js/controllers/uikits/email.js']
-                });
-            }]
-        }
-    })
 }]);

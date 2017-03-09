@@ -1,38 +1,54 @@
-﻿<div class="animated fadeIn">
+﻿<div class="filter-user">
+    <ul>
+        <li>
+            <select class="form-control">
+                <option>Lọc cơ bản</option>
+                <option>Lọc nâng cao</option>
+            </select>
+        </li>
+
+        <li><a href="" title="">Vị trí làm việc</a></li>
+        <li><a href="" title="">Ca làm việc</a></li>
+        <li><a href="" title="">Kinh nghiệm</a></li>
+        <li><a href="" title="">Mức lương</a></li>
+        <li><a href="" title="">Ngoại hình</a></li>
+        <li><a href="" title="">Giới tính</a></li>
+        <li><a href="" title="">Bán kính tìm kiếm</a></li>
+    </ul>
+</div>
+
+<div class="animated fadeIn">
 
     <div class="list-profile">
         <div class="row row-s">
-            <div class="col-xs-12 col-md-6 col-lg-4 col-s" ng-repeat="user in Userdata">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-s" ng-repeat="user in Userdata">
                 <div class="card item-card">
                     <div class="row row-s">
-                        <div class="col-xs-12 col-sm-4 col-s">
+                        <div class="col-lg-12 col-s">
                             <div class="img-avatar">
                                 <img src="{{user.photourl}}" />
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-8 col-s">
-                            <h2>{{user.name}}</h2>
-                            <p>{{user.createdAt}}</p>
-                            <p>{{user.address}}</p>
-                            <p>{{user.phone}}</p>
+                        <div class="col-lg-12 col-s">
+                            <div class="user-info">
+                                <h2>{{user.name}}</h2>
+                                <p>{{user.createdAt}}</p>
+                                <p>{{user.address}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience">
+                        <h3>Kinh nghiệm</h3>
+                        <div class="company">
+                            <p>Nhà hàng, khách sạn, cà phê....</p>
                         </div>
                     </div>
                     <div class="care-list">
-                        <h3>Quan tâm</h3>
                         <ul>
                             <li>
                                 <button>Thu ngân</button>
                             </li>
                         </ul>
-                    </div>
-                    <div class="experience">
-                        <h3>Kinh nghiệm làm việc</h3>
-                        <div class="company">
-                            <p>Comapny title</p>
-                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                            <p>Position Title</p>
-                        </div>
-                        <span>2014-2017</span>
                     </div>
                 </div>
 

@@ -1,8 +1,95 @@
 ﻿angular
     .module('app')
 .controller('seekerSignupCtrl', seekerSignupCtrl)
+.filter('propsFilter', propsFilter)
 
-function seekerSignupCtrl($rootScope, $scope, $window, $timeout, $state, $stateParams, firebase) {
+function seekerSignupCtrl($rootScope, $scope, $window, $timeout, $state, $stateParams, $http, firebase, CONFIG) {
+
+    $scope.availableColors = ['Red', 'Green', 'Blue', 'Yellow', 'Magenta', 'Maroon', 'Umbra', 'Turquoise'];
+
+    $scope.multipleDemo = {};
+    $scope.multipleDemo.colors = ['Blue', 'Red'];
+
+    $scope.userData = {
+        "createdAt": 1488285452104,
+        "email": "test2@joboapp.com",
+        "name": "Hoàng Quốc",
+        "phone": "0987654345",
+        "photourl": "img/macdinh.jpg",
+        "type": 2,
+        "userid": "2Ex94dTG7ffOJTIuadP5Ko4XBtd2",
+        "address": "48 Hai Bà Trưng, Tràng Tiền, Hoàn Kiếm, Hà Nội, Vietnam",
+        "birth": 1996,
+        "experience": true,
+        "figure": true,
+        "job": {
+            "baotri": true
+        },
+        "location": {
+            "lat": 21.0250862,
+            "lng": 105.8502656
+        },
+        "sex": "Nữ",
+    };
+
+
+    //scholl
+    $scope.autocompleteSchool = { text: '' };
+    $scope.searchSchool = function () {
+
+        $scope.URL = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + $scope.autocompleteSchool.text + '&language=vi&type=university&components=country:VN&sensor=true&key=' + CONFIG.APIKey;
+        $http({
+            method: 'GET',
+            url: $scope.URL
+        }).then(function successCallback(response) {
+
+            $scope.ketquasSchool = response.data.results;
+            console.log($scope.ketquasSchool);
+        })
+    };
+
+    //address
+    $scope.autocompleteAddress = { text: '' };
+    $scope.searchAddress = function () {
+
+        $scope.URL = 'https://maps.google.com/maps/api/geocode/json?address=' + $scope.autocompleteAddress.text + '&components=country:VN&sensor=true&key=' + CONFIG.APIKey;
+        $http({
+            method: 'GET',
+            url: $scope.URL
+        }).then(function successCallback(response) {
+
+            $scope.ketquasAddress = response.data.results;
+            console.log($scope.ketquasAddress);
+        })
+    };
+
+    $scope.setSelectedAddress = function (selected) {
+        $scope.address = selected;
+        console.log($scope.address)
+        $scope.userData.address = selected.formatted_address;
+        $scope.userData.location = selected.geometry.location;
+
+    };
+
+    var a = 1;
+    $scope.userData.experience = {}
+    $scope.userData.experience[a] = {}
+    $scope.addMoreExp = function (exp) {
+        var stt;
+        for (var i in exp) {
+            stt = i
+        }
+        var n = stt + 1
+        exp[n] = {}
+    }
+
+    $scope.deleteExp = function (exp) {
+        var stt;
+        for (var i in exp) {
+            stt = i
+        }
+        delete exp[stt]
+    }
 
     $scope.doSignup = function (userSignup) {
         debugger
@@ -21,7 +108,7 @@ function seekerSignupCtrl($rootScope, $scope, $window, $timeout, $state, $stateP
             });
 
             console.log("Update user successfully");
-            $state.go('appSimple.signupphone')
+            $state.go('appSimple.seekersignupinfo')
         }, function (error) {
             var errorCode = error.code;
             console.log(errorCode);
@@ -50,4 +137,35 @@ function seekerSignupCtrl($rootScope, $scope, $window, $timeout, $state, $stateP
         console.log("phone ok");
     };
 
+}
+
+function propsFilter() {
+    return function (items, props) {
+        var out = [];
+
+        if (angular.isArray(items)) {
+            items.forEach(function (item) {
+                var itemMatches = false;
+
+                var keys = Object.keys(props);
+                for (var i = 0; i < keys.length; i++) {
+                    var prop = keys[i];
+                    var text = props[prop].toLowerCase();
+                    if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
+                        itemMatches = true;
+                        break;
+                    }
+                }
+
+                if (itemMatches) {
+                    out.push(item);
+                }
+            });
+        } else {
+            // Let the output be the input untouched
+            out = items;
+        }
+
+        return out;
+    }
 }
