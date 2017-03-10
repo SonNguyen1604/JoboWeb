@@ -272,3 +272,49 @@ header.navbar .navbar-brand{
 ul.ui-select-choices.ui-select-choices-content.select2-results li{
     padding: 5px 0px;
 }
+
+#list-add, #list-school{
+    position: absolute;
+    top: 100%;
+    z-index: 111;
+    background: white;
+    border: 1px solid #ccc;
+    list-style-type: none;
+    padding-left: 0px;
+    width: 100%;
+    border-top: 0;
+}
+
+#list-add li, #list-school li{
+    padding: 5px 16px;
+    cursor: pointer;
+}
+
+#list-add li:hover, #list-school:hover{
+    background: #1FBDF1;
+    background: -webkit-linear-gradient(to left, #1FBDF1, #39DFA5);
+    background: linear-gradient(to left, #1FBDF1, #39DFA5);
+    color: white;
+}
+
+.pop-add{
+    position: relative;
+}
+
+#delete-address, #delete-school{
+    position: absolute;
+    right: 7px;
+    top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: red;
+}
+
+.avatar-img{
+    text-align: center;
+}
+
+.avatar-img img{
+    height: 90px;
+    border-radius: 100%;
+}

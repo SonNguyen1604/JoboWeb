@@ -5,6 +5,7 @@
 
 function seekerSignupCtrl($rootScope, $scope, $window, $timeout, $state, $stateParams, $http, firebase, CONFIG) {
 
+    
     $scope.availableColors = ['Red', 'Green', 'Blue', 'Yellow', 'Magenta', 'Maroon', 'Umbra', 'Turquoise'];
 
     $scope.multipleDemo = {};
@@ -18,19 +19,19 @@ function seekerSignupCtrl($rootScope, $scope, $window, $timeout, $state, $stateP
         "photourl": "img/macdinh.jpg",
         "type": 2,
         "userid": "2Ex94dTG7ffOJTIuadP5Ko4XBtd2",
-        "address": "48 Hai Bà Trưng, Tràng Tiền, Hoàn Kiếm, Hà Nội, Vietnam",
+        //"address": "48 Hai Bà Trưng, Tràng Tiền, Hoàn Kiếm, Hà Nội, Vietnam",
         "birth": 1996,
-        "experience": true,
         "figure": true,
         "job": {
             "baotri": true
         },
+        "distance": 5,
         "location": {
             "lat": 21.0250862,
             "lng": 105.8502656
         },
         "sex": "Nữ",
-    };
+    }
 
 
     //scholl
@@ -50,26 +51,41 @@ function seekerSignupCtrl($rootScope, $scope, $window, $timeout, $state, $stateP
 
     //address
     $scope.autocompleteAddress = { text: '' };
+    $scope.ketquasAddress = [];
     $scope.searchAddress = function () {
-
         $scope.URL = 'https://maps.google.com/maps/api/geocode/json?address=' + $scope.autocompleteAddress.text + '&components=country:VN&sensor=true&key=' + CONFIG.APIKey;
         $http({
             method: 'GET',
             url: $scope.URL
         }).then(function successCallback(response) {
-
             $scope.ketquasAddress = response.data.results;
             console.log($scope.ketquasAddress);
+            $('#list-add').show();
+            //$("#address").autocomplete({
+            //    source: $scope.ketquaArray,
+            //    select: function () {
+            //        $timeout(function () {
+            //            $("#address").trigger('input');
+            //        }, 0);
+            //    }
+            //});
         })
     };
 
     $scope.setSelectedAddress = function (selected) {
+        $scope.autocompleteAddress.text = selected;
         $scope.address = selected;
-        console.log($scope.address)
-        $scope.userData.address = selected.formatted_address;
-        $scope.userData.location = selected.geometry.location;
+        console.log(selected);
+        $('#list-add').hide();
+        //$scope.userData.address = selected.formatted_address;
+        //$scope.userData.location = selected.geometry.location;
 
     };
+
+    $scope.eraseAddress = function () {
+        $scope.autocompleteAddress.text = null;
+        $('#list-add').hide();
+    }
 
     var a = 1;
     $scope.userData.experience = {}
@@ -92,7 +108,6 @@ function seekerSignupCtrl($rootScope, $scope, $window, $timeout, $state, $stateP
     }
 
     $scope.doSignup = function (userSignup) {
-        debugger
         $rootScope.registering = true;
 
         firebase.auth().createUserWithEmailAndPassword(userSignup.email, userSignup.password).then(function (user) {
@@ -168,4 +183,8 @@ function propsFilter() {
 
         return out;
     }
+}
+
+function DefaultCtrl($scope) {
+    $scope.names = ["john", "bill", "charlie", "robert", "alban", "oscar", "marie", "celine", "brad", "drew", "rebecca", "michel", "francis", "jean", "paul", "pierre", "nicolas", "alfred", "gerard", "louis", "albert", "edouard", "benoit", "guillaume", "nicolas", "joseph"];
 }

@@ -36,13 +36,14 @@
 
                                 <fieldset class="form-group">
                                     <label>Địa chỉ</label>
-                                    <ui-select class="form-control" multiple ng-model="userData.address" theme="select2">
-                                        <ui-select-match placeholder="Select colors..." ng-keydown="searchAddress()">{{$item}}</ui-select-match>
-                                        <ui-select-choices repeat="address in ketquasAddress">
-                                            {{address}}
-                                        </ui-select-choices>
-                                    </ui-select>
-                                    <small class="text-muted">Selected: {{userData.address}}</small>
+                                    <div class="pop-add">
+                                        <input ng-keydown="searchAddress()" id="address" ui-items="names" ng-model="autocompleteAddress.text" class="form-control">
+                                        <i class="icon-close" id="delete-address" ng-show="autocompleteAddress.text.length" ng-click="eraseAddress()"></i>
+                                        <ul id="list-add" ng-show="autocompleteAddress.text.length">
+                                            <li ng-repeat="ketqua in ketquasAddress" ng-click="setSelectedAddress(ketqua.formatted_address)">{{ketqua.formatted_address}}</li>
+                                        </ul>
+                                    </div>
+                                    
                                 </fieldset>
 
                                 <fieldset class="form-group">
@@ -71,11 +72,8 @@
                             <div class="card-block">
                                 <fieldset class="form-group">
                                     <label>Avatar</label>
-                                    <div class="input-group mb-1">
-                                        <span class="input-group-addon">
-                                            <i class="icon-user"></i>
-                                        </span>
-                                        <input type="text" class="form-control" placeholder="Họ tên" ng-model="userData.name" id="name">
+                                    <div class="avatar-img">
+                                        <img src="../../../img/macdinh.jpg"/>
                                     </div>
                                 </fieldset>
                                 <div class="form-group">
@@ -101,7 +99,7 @@
                                 <fieldset class="form-group">
                                     <label>Ngoại hình ưa nhìn</label>
                                     <label class="switch switch-default switch-pill switch-primary" style="float: right">
-                                        <input type="checkbox" class="switch-input" checked="" ng-model="userData.figure">
+                                        <input type="checkbox" class="switch-input" checked="{{userData.figure}}" ng-model="userData.figure">
                                         <span class="switch-label"></span>
                                         <span class="switch-handle"></span>
                                     </label>
@@ -114,13 +112,15 @@
                             </div>
                             <div class="card-block">
                                 <fieldset class="form-group">
-                                    <label>Ngoại ngữ</label>
-                                    <div class="input-group mb-1">
-                                        <span class="input-group-addon">
-                                            <i class="icon-globe"></i>
-                                        </span>
-                                        <input type="text" class="form-control" placeholder="Trường" ng-model="userData.school" ng-keydown="searchSchool()">
+                                    <label>Trường</label>
+                                    <div class="pop-add">
+                                        <input ng-keydown="searchSchool()" id="school" ui-items="names" ng-model="autocompleteSchool.text" class="form-control">
+                                        <i class="icon-close" id="delete-school" ng-show="autocompleteSchool.text.length" ng-click="eraseSchool()"></i>
+                                        <ul id="list-school" ng-show="autocompleteSchool.text.length">
+                                            <li ng-repeat="ketqua in ketquasSchool" ng-click="setSelectedSchool(ketqua.formatted_address)">{{ketqua.school}}</li>
+                                        </ul>
                                     </div>
+
                                 </fieldset>
 
                                 <fieldset class="form-group">
@@ -230,8 +230,8 @@
 
 
                                 <fieldset class="form-group">
-                                    <button ng-click="addMoreExp(userData.experience)">Thêm</button>
-                                    <button ng-click="deleteExp(userData.experience)">Xóa</button>
+                                    <button type="button" class="btn btn-primary" ng-click="addMoreExp(userData.experience)"><i class="fa fa-plus"></i>&nbsp; Thêm</button>
+                                    <button type="button" class="btn btn-danger" ng-click="deleteExp(userData.experience)"><i class="fa fa-times"></i>&nbsp; Xóa</button>
                                 </fieldset>
                             </div>
                         </div>

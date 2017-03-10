@@ -19,7 +19,6 @@
     <link rel="shortcut icon" href="img/favicon.png">
 
     <title>Clever - Bootstrap 4 Admin Template</title>
-
     <!-- Main styles for this application -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
@@ -53,7 +52,12 @@
     <ui-view></ui-view>
 
     <!-- Bootstrap and necessary plugins -->
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
     <script src="bower_components/tether/dist/js/tether.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -69,7 +73,7 @@
     <script src="bower_components/angular-breadcrumb/dist/angular-breadcrumb.min.js"></script>
     <script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
 
-
+    
     <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
     <script>
     // Initialize Firebase
@@ -83,6 +87,8 @@
     firebase.initializeApp(config);
     </script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
+
+
     <!-- AngularJS Clever App scripts -->
     <script src="js/config.js"></script>
     <script src="js/app.js"></script>

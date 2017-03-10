@@ -163,6 +163,12 @@ angular
                   },
                   {
                       files: ['bower_components/angular-ui-select/dist/select.min.js']
+                  },
+                  {
+                      files: [
+                        'bower_components/ionrangeslider/js/ion.rangeSlider.min.js',
+                        'bower_components/ionrangeslider.angular/slider.js'
+                      ]
                   }
                 ]);
             }],

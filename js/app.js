@@ -21,7 +21,7 @@ angular
   'ngSanitize',
   'ngAnimate',
   'firebase',
-  'starter.configs'
+  'starter.configs',
 ])
 .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
   cfpLoadingBarProvider.includeSpinner = false;
