@@ -5,6 +5,14 @@ angular.module('app')
 .controller('seekerdashboardCtrl', dashboardCtrl)
 
 function dashboardCtrl($scope, $timeout) {
+
+    $scope.openModal = function ($event) {
+        $event.preventDefault();
+        var inst = $('[data-remodal-id=modal]').remodal();
+        inst.open();
+    }
+
+
     $scope.Userdata = {}
     var ProfileRef = firebase.database().ref('user/')
 

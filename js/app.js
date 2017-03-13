@@ -22,6 +22,7 @@ angular
   'ngAnimate',
   'firebase',
   'starter.configs',
+  'ngFileUpload'
 ])
 .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
   cfpLoadingBarProvider.includeSpinner = false;

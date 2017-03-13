@@ -3,7 +3,16 @@
 .controller('seekerSignupCtrl', seekerSignupCtrl)
 .filter('propsFilter', propsFilter)
 
-function seekerSignupCtrl($rootScope, $scope, $window, $timeout, $state, $stateParams, $http, firebase, CONFIG) {
+function seekerSignupCtrl($rootScope, $scope, $window, $timeout, $state, $stateParams, $http, firebase, CONFIG, Upload) {
+    
+
+    $scope.upimg = function () {
+        debugger
+        $scope.$watch('files', function () {
+            console.log($scope.files);
+            $scope.upload($scope.files);
+        }, true);
+    };
 
     
     $scope.availableColors = ['Red', 'Green', 'Blue', 'Yellow', 'Magenta', 'Maroon', 'Umbra', 'Turquoise'];
@@ -141,7 +150,6 @@ function seekerSignupCtrl($rootScope, $scope, $window, $timeout, $state, $stateP
     };
 
     $scope.doUpdate = function (userSignup) {
-        debugger
         console.log($rootScope.userid);
         $scope.usersRef = firebase.database().ref('user/' + $rootScope.userid);
         console.log($scope.usersRef);

@@ -3,11 +3,11 @@
         <div class="row justify-content-center" style="margin-top: 100px;">
             <div class="col-md-6">
                 <div class="card card-border">
-                    <div class="card-block p-2" style="text-align: center">
+                    <div class="card-block p-2" style="text-align: left">
                         <h1>Cập nhật thông tin</h1>
                         <p class="text-muted">Cập nhật thêm đầy đủ thông tin của bạn</p>
                     </div>
-                    <form name="signupForm" ng-submit="doSignup(userData)" class="form-update">
+                    <form name="signupForm" ng-submit="doUpdate(userData)" class="form-update">
 
                         <div class="card">
                             <div class="card-header">
@@ -73,14 +73,19 @@
                                 <fieldset class="form-group">
                                     <label>Avatar</label>
                                     <div class="avatar-img">
-                                        <img src="../../../img/macdinh.jpg"/>
+                                        <div class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+                                             ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                                             ngf-resize="{width: 100, height: 100}">Select</div>
+                                        <button ng-click="upimg()">Upload</button>
+                                        <img ngf-thumbnail="file || '/thumb.jpg'">
+                                        <img src="{{userData.photourl}}"/>
                                     </div>
                                 </fieldset>
                                 <div class="form-group">
-                                    <label class="form-control-label" for="appendedInput">Chiều cao</label>
+                                    <label class="form-control-label">Chiều cao</label>
                                     <div class="controls">
                                         <div class="input-group">
-                                            <input id="appendedInput" class="form-control" size="16" type="text">
+                                            <input ng-model="userData.height" class="form-control" size="16" type="text">
                                             <span class="input-group-addon">cm</span>
                                         </div>
                                     </div>

@@ -25,8 +25,12 @@
                 <div class="card item-card">
                     <div class="row row-s">
                         <div class="col-lg-12 col-s">
-                            <div class="img-avatar">
-                                <img src="{{user.photourl}}" />
+                            <div class="img-avatar avatar-dash">
+                                <!--<a data-remodal-target="modal" ng-click="openModal($event)">-->
+                                <a href="#!/viewprofile/{{user.userid}}">
+                                    <img src="{{user.photourl}}" />
+                                </a>
+                                <i class="fa fa-play-circle play-button"></i>
                             </div>
                         </div>
                         <div class="col-lg-12 col-s">
@@ -37,24 +41,38 @@
                             </div>
                         </div>
                     </div>
-                    <div class="experience">
-                        <h3>Kinh nghiệm</h3>
-                        <div class="company">
-                            <p>Nhà hàng, khách sạn, cà phê....</p>
+                    <div class="border-top-care">
+                        <div class="experience">
+                            <h3>Kinh nghiệm</h3>
+                            <div class="company">
+                                <p>Nhà hàng, khách sạn, cà phê....</p>
+                            </div>
+                        </div>
+                        <div class="care-list">
+                            <ul>
+                                <li>
+                                    <button>Thu ngân</button>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="care-list">
-                        <ul>
-                            <li>
-                                <button>Thu ngân</button>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
-
+                <div class="button-hide">
+                    <button>Tuyển</button>
+                    <button>Ẩn</button>
+                </div>
             </div>
         </div>
     </div>
-
+    <div class="remodal" data-remodal-id="modal">
+        <button data-remodal-action="close" class="remodal-close"></button>
+        <h1>Remodal</h1>
+        <p>
+            Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.
+        </p>
+        <br>
+        <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+        <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+    </div>
 </div>
-<div ng-controller="toastrWelcome"></div>
+<!--<div ng-controller="toastrWelcome"></div>-->

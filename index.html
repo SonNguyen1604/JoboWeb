@@ -20,6 +20,8 @@
 
     <title>Clever - Bootstrap 4 Admin Template</title>
     <!-- Main styles for this application -->
+    <link href="bower_components/remodal/dist/remodal-default-theme.css" rel="stylesheet" />
+    <link href="bower_components/remodal/dist/remodal.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
 
@@ -72,19 +74,22 @@
     <script src="bower_components/angular-translate/angular-translate.min.js"></script>
     <script src="bower_components/angular-breadcrumb/dist/angular-breadcrumb.min.js"></script>
     <script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
 
-    
+    <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+    <script src="bower_components/remodal/dist/remodal.min.js"></script>
+
     <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
     <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyBmGitstHLBeb5-Y4HzQYkm0OnmyHjLm-4",
-      authDomain: "jobfast-359da.firebaseapp.com",
-      databaseURL: "https://jobfast-359da.firebaseio.com",
-      storageBucket: "jobfast-359da.appspot.com",
-      messagingSenderId: "1075962129210"
-    };
-    firebase.initializeApp(config);
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBmGitstHLBeb5-Y4HzQYkm0OnmyHjLm-4",
+            authDomain: "jobfast-359da.firebaseapp.com",
+            databaseURL: "https://jobfast-359da.firebaseio.com",
+            storageBucket: "jobfast-359da.appspot.com",
+            messagingSenderId: "1075962129210"
+        };
+        firebase.initializeApp(config);
     </script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
 
@@ -96,6 +101,7 @@
     <script src="views/auth/seekerLoginCtrl.js"></script>
     <script src="views/signup/seeker/seekerSignupCtrl.js"></script>
     <script src="views/joblist/joblistCtrl.js"></script>
+    <script src="views/employer/modals/viewprofilejs.js"></script>
     <script src="js/routes.js"></script>
 
     <script src="js/controllers.js"></script>

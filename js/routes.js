@@ -1,3 +1,5 @@
+/// <reference path="../bower_components/ng-file-upload/ng-file-upload-shim.min.js" />
+/// <reference path="../bower_components/ng-file-upload/ng-file-upload-shim.min.js" />
 angular
 .module('app')
 .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$breadcrumbProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $breadcrumbProvider) {
@@ -126,7 +128,7 @@ angular
     .state('app.seekerdash', {
         url: '/seekerdash',
         templateUrl: 'views/dash/seekerDashboard.html',
-        controller: 'seekerdashboardCtrl'
+        controller: 'seekerdashboardCtrl',
     })
 
     // seeker login
@@ -169,7 +171,7 @@ angular
                         'bower_components/ionrangeslider/js/ion.rangeSlider.min.js',
                         'bower_components/ionrangeslider.angular/slider.js'
                       ]
-                  }
+                  },
                 ]);
             }],
             //loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -184,6 +186,12 @@ angular
         url: '/jobfast',
         templateUrl: 'views/joblist/joblist.html',
         controller: 'joblistCtrl',
+    })
+
+    .state('appSimple.viewprofile', {
+        url: '/viewprofile/:id',
+        templateUrl: 'views/employer/modals/viewprofile.html',
+        controller: 'ViewProfileCtrl'
     })
 
 
