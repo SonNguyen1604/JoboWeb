@@ -56,12 +56,13 @@ function sprofileCtrl($rootScope, $scope, AuthUser, $window, $timeout, $state, $
     };
 
     $scope.upload = function (imageData) {
+        debugger
         console.log('imageData', imageData)
         var metadata = {
             'contentType': imageData.type
         };
         var storageRef = firebase.storage().ref();
-        var uploadTask = storageRef.child('images/' + $rootScope.userid + imageData.lastModified).put(imageData, metadata);
+        var uploadTask = storageRef.child('images/' + $rootScope.userid + imageData[0].lastModified).put(imageData[0]);
 
         uploadTask.on('state_changed', function(snapshot){
             // Observe state change events such as progress, pause, and resume
@@ -82,17 +83,46 @@ function sprofileCtrl($rootScope, $scope, AuthUser, $window, $timeout, $state, $
             // Handle successful uploads on complete
             // For instance, get the download URL: https://firebasestorage.googleapis.com/...
             var downloadURL = uploadTask.snapshot.downloadURL;
-            console.log(downloadURL)
-            $rootScope.userData.photourl = downloadURL
+            console.log(downloadURL);
+            $rootScope.userData.photourl = downloadURL;
+            $scope.$apply(function () {
+                $scope.photoUrl = downloadURL;
+
+            })
         });
     };
 
+    //Industry
+    $scope.arrayIndustry = [];
+    angular.forEach($rootScope.dataIndustry, function (e) {
+        $scope.arrayIndustry.push(e);
+    })
+    $scope.availableIns = $scope.arrayIndustry;
+    $scope.multipleIns = {};
 
-    $scope.availableColors = ['Red', 'Green', 'Blue', 'Yellow', 'Magenta', 'Maroon', 'Umbra', 'Turquoise'];
-// languuage: $scope.availableColors = $rootScope.dataLanguages
+    //Job
+    $scope.arrayJob = [];
+    angular.forEach($rootScope.dataJob, function (e) {
+        $scope.arrayJob.push(e);
+    })
+    $scope.availableJob = $scope.arrayJob;
+    $scope.multipleJob = {};
+
+    //Language
+    $scope.arrayLang = [];
+    angular.forEach($rootScope.dataLanguages, function (e) {
+        $scope.arrayLang.push(e);
+    })
+    $scope.availableColors = $scope.arrayLang;
     $scope.multipleDemo = {};
-    $scope.multipleDemo.colors = ['Blue', 'Red'];
 
+    //Time
+    $scope.arrayTime = [];
+    angular.forEach($rootScope.dataTime, function (e) {
+        $scope.arrayTime.push(e);
+    })
+    $scope.timeData = $scope.arrayTime;
+    $scope.timeDemo = {};
 
     //school
     $scope.autocompleteSchool = {text: ''};

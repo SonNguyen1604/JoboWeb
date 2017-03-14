@@ -483,3 +483,14 @@ ul.ui-select-choices.ui-select-choices-content.select2-results li{
 .button-hide-profile button:nth-child(1){
     width: 200px;
 }
+
+.drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    text-align: center;
+    padding: 25px;
+    margin: 10px;
+}
+.dragover {
+    border: 5px dashed blue;
+}
