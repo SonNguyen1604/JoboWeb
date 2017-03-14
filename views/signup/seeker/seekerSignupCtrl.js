@@ -1,10 +1,11 @@
-﻿angular
-    .module('app')
+﻿"use strict";
+
+app
 .controller('seekerSignupCtrl', seekerSignupCtrl)
 .filter('propsFilter', propsFilter)
 
 function seekerSignupCtrl($rootScope, $scope, $window, $timeout, $state, $stateParams, $http, firebase, CONFIG, Upload) {
-    
+
 
     $scope.upimg = function () {
         debugger
@@ -14,7 +15,7 @@ function seekerSignupCtrl($rootScope, $scope, $window, $timeout, $state, $stateP
         }, true);
     };
 
-    
+
     $scope.availableColors = ['Red', 'Green', 'Blue', 'Yellow', 'Magenta', 'Maroon', 'Umbra', 'Turquoise'];
 
     $scope.multipleDemo = {};
