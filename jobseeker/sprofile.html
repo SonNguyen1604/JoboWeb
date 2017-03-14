@@ -1,0 +1,270 @@
+<div class="app flex-row align-items-center animated fadeIn" ng-init="init()">
+  <div class="container">
+    <div class="row justify-content-center" style="margin-top: 100px;">
+      <div class="col-md-6">
+        <div class="card card-border">
+          <div class="card-block p-2" style="text-align: left">
+            <h1>Cập nhật thông tin</h1>
+            <p class="text-muted">Cập nhật thêm đầy đủ thông tin của bạn</p>
+          </div>
+          <form name="signupForm" class="form-update">
+
+            <div class="card">
+              <div class="card-header">
+                <strong>Thông tin liên hệ</strong>
+              </div>
+              <div class="card-block">
+                <fieldset class="form-group">
+                  <label>Họ tên</label>
+                  <div class="input-group mb-1">
+                                        <span class="input-group-addon">
+                                            <i class="icon-user"></i>
+                                        </span>
+                    <input type="text" class="form-control" placeholder="Họ tên" ng-model="userData.name" id="name">
+                  </div>
+                </fieldset>
+                <fieldset class="form-group">
+                  <label>Ngày sinh</label>
+                  <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                    <input type="text" class="form-control" ng-model="userData.date" ui-mask="99/99/9999">
+                  </div>
+                  <small class="text-muted">ex. 99/99/9999</small>
+                </fieldset>
+
+                <fieldset class="form-group">
+                  <label>Địa chỉ</label>
+                  <div class="pop-add">
+                    <input ng-keydown="searchAddress()" id="address" ui-items="names" ng-model="autocompleteAddress.text" class="form-control">
+                    <i class="icon-close" id="delete-address" ng-show="autocompleteAddress.text.length" ng-click="eraseAddress()"></i>
+                    <ul id="list-add" ng-show="autocompleteAddress.text.length">
+                      <li ng-repeat="ketqua in ketquasAddress" ng-click="setSelectedAddress(ketqua.formatted_address)">{{ketqua.formatted_address}}</li>
+                    </ul>
+                  </div>
+
+                </fieldset>
+
+                <fieldset class="form-group">
+                  <label>Email</label>
+                  <div class="input-group mb-1">
+                    <span class="input-group-addon">@</span>
+                    <input type="text" class="form-control" placeholder="Email" id="email" ng-model="userData.email">
+                  </div>
+                </fieldset>
+
+                <fieldset class="form-group">
+                  <label>Số điện thoại</label>
+                  <div class="input-group mb-1">
+                                        <span class="input-group-addon">
+                                            <i class="icon-phone"></i>
+                                        </span>
+                    <input type="text" class="form-control" placeholder="{{userData.phone}}" ng-model="userData.phone">
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <strong>Thông tin cá nhân</strong>
+              </div>
+              <div class="card-block">
+                <fieldset class="form-group">
+                  <label>Avatar</label>
+                  <div class="avatar-img">
+                    <div class="button" ngf-select ng-model="file" name="file">Select</div>
+                    <button ng-click="upimg()">Upload</button>
+                    <img ngf-thumbnail="file || '/thumb.jpg'">
+                    <!--<img src="{{userData.photourl}}"/>-->
+                  </div>
+                </fieldset>
+                <div class="form-group">
+                  <label class="form-control-label">Chiều cao</label>
+                  <div class="controls">
+                    <div class="input-group">
+                      <input ng-model="userData.height" class="form-control" size="16" type="text">
+                      <span class="input-group-addon">cm</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-control-label" for="appendedInput">Cân nặng</label>
+                  <div class="controls">
+                    <div class="input-group">
+                      <input id="appendedInput" class="form-control" size="16" type="text">
+                      <span class="input-group-addon">kg</span>
+                    </div>
+                  </div>
+                </div>
+
+                <fieldset class="form-group">
+                  <label>Ngoại hình ưa nhìn</label>
+                  <label class="switch switch-default switch-pill switch-primary" style="float: right">
+                    <input type="checkbox" class="switch-input" checked="{{userData.figure}}" ng-model="userData.figure">
+                    <span class="switch-label"></span>
+                    <span class="switch-handle"></span>
+                  </label>
+                </fieldset>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <strong>Trình độ học vấn</strong>
+              </div>
+              <div class="card-block">
+                <fieldset class="form-group">
+                  <label>Trường</label>
+                  <div class="pop-add">
+                    <input ng-keydown="searchSchool()" id="school" ui-items="names" ng-model="autocompleteSchool.text" class="form-control">
+                    <i class="icon-close" id="delete-school" ng-show="autocompleteSchool.text.length" ng-click="eraseSchool()"></i>
+                    <ul id="list-school" ng-show="autocompleteSchool.text.length">
+                      <li ng-repeat="ketqua in ketquasSchool" ng-click="setSelectedSchool(ketqua)">{{ketqua.name}}</li>
+                    </ul>
+                  </div>
+
+                </fieldset>
+
+                <fieldset class="form-group">
+                  <label>Ngoại ngữ</label>
+                  <ui-select class="form-control" multiple ng-model="multipleDemo.colors" theme="select2">
+                    <ui-select-match placeholder="Select colors...">{{$item}}</ui-select-match>
+                    <ui-select-choices repeat="color in availableColors | filter:$select.search">
+                      {{color}}
+                    </ui-select-choices>
+                  </ui-select>
+                  <small class="text-muted">Selected: {{multipleDemo.colors}}</small>
+                </fieldset>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <strong>Mong muốn tìm việc</strong>
+              </div>
+              <div class="card-block">
+                <div class="form-group">
+                  <label class="form-control-label">Thu nhập mong muốn</label>
+                  <div class="controls">
+                    <div class="input-group">
+                      <input class="form-control" type="text">
+                      <span class="input-group-addon">VNĐ/tháng</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">Nơi làm việc mong muốn</label>
+                  <div class="controls">
+                    <div class="input-group">
+                      <input ng-model="userData.industry" class="form-control" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">Công việc mong muốn</label>
+                  <div class="controls">
+                    <div class="input-group">
+                      <input class="form-control" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label" for="appendedInput">Thời gian đi làm</label>
+                  <div class="controls">
+                    <div class="input-group">
+                      <input ng-repeat="(key,value) in userData.time" class="form-control" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label" for="appendedInput">Khoảng cách di chuyển {{userData.distance}} km</label>
+                  <div class="controls">
+                    <ionslider ng-model="range1"></ionslider>
+                    <pre>{{range1.options | json }}</pre>
+
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label" for="appendedInput">Trạng thái tìm việc</label>
+                  <div class="controls">
+                    <select class="form-control" ng-model="userData.status">
+                      <option value="1">Gấp</option>
+                      <option value="0">Bình thường</option>
+                      <option value="-1">Chưa có nhu cầu</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <strong>Kinh nghiệm làm việc</strong>
+              </div>
+              <div class="card-block">
+                <div ng-repeat="card in userData.experience">
+                  <fieldset class="form-group">
+                    <label>Nơi làm việc</label>
+                    <div class="input-group mb-1">
+                      <input type="text" class="form-control" placeholder="Nơi làm việc" ng-model="card.company">
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="form-group">
+                    <label>Công việc</label>
+                    <div class="input-group mb-1">
+                      <input type="text" class="form-control" placeholder="Công việc" ng-repeat="(key,value) in card.job">
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="form-group">
+                    <label>Bắt đầu</label>
+                    <div class="input-group mb-1">
+                      <input type="text" class="form-control" ng-model="card.start" ng-model="userData.name">
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="form-group">
+                    <label>Kết thúc</label>
+                    <div class="input-group mb-1">
+                      <input type="text" class="form-control" placeholder="Công việc" ng-model="userData.name">
+                    </div>
+                  </fieldset>
+                </div>
+
+
+                <fieldset class="form-group">
+                  <button type="button" class="btn btn-primary" ng-click="addMoreExp(userData.experience)"><i class="fa fa-plus"></i>&nbsp; Thêm</button>
+                  <button type="button" class="btn btn-danger" ng-click="deleteExp(userData.experience)"><i class="fa fa-times"></i>&nbsp; Xóa</button>
+                </fieldset>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <strong>Khác</strong>
+              </div>
+              <div class="card-block">
+                <fieldset class="form-group">
+                  <label>Giới thiệu bản thân</label>
+                  <div class="input-group mb-1">
+                    <textarea class="form-control" ng-model="userData.description" placeholder="..." style="height: 100px;"></textarea>
+                  </div>
+                </fieldset>
+
+                <fieldset class="form-group">
+                  <label>Video giới thiệu</label>
+                  <div class="mb-1">
+                    <input class="form-control" ng-model="userData.videourl" type="url" placeholder="Http://youtube.com/">
+                    <p>Video giới thiệu về bản thân, tại sao nhà tuyển dụng nên chọn bạn...</p>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+
+
+            <button ng-click="submit()" type="submit" class="btn btn-block btn-success main-backgroud">Đăng ký</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

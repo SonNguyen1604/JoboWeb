@@ -1,0 +1,64 @@
+<div class="app flex-row align-items-center animated fadeIn">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card mx-2">
+          <div class="card-block p-2 header-signup">
+            <h1>Đăng ký</h1>
+            <p class="text-muted" ng-if="type == 1">Tạo tài khoản nhà tuyển dụng</p>
+            <p class="text-muted" ng-if="type == 2">Tạo tài khoản ứng viên</p>
+
+            <form name="signupForm" ng-submit="doSignup(userSignup)">
+              <div class="input-group mb-1">
+                                <span class="input-group-addon">
+                                    <i class="icon-phone"></i>
+                                </span>
+                <input type="number" class="form-control" placeholder="Số điện thoại" id="repass" ng-model="userSignup.phone">
+              </div>
+              <div class="input-group mb-1">
+                <span class="input-group-addon">@</span>
+                <input type="email" class="form-control" placeholder="Email" id="email" ng-model="userSignup.username">
+              </div>
+
+              <div class="input-group mb-2">
+                                <span class="input-group-addon">
+                                    <i class="icon-lock"></i>
+                                </span>
+                <input type="password" class="form-control" placeholder="Mật khẩu" id="password" ng-model="userSignup.password">
+              </div>
+
+
+
+              <button type="submit" class="btn btn-block btn-success main-backgroud">Đăng ký</button>
+            </form>
+
+          </div>
+          <div class="card-footer p-2">
+            <div class="row">
+              <div class="col-6">
+                <button ng-click="facebookLogin()" class="btn btn-block btn-facebook" type="button">
+                  <span>facebook</span>
+                </button>
+              </div>
+              <div class="col-6">
+                <button ng-click="openModal()" class="btn btn-block btn-google-plus" type="button">
+                  <span>google</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="remodal" data-remodal-id="modal2">
+  <button data-remodal-action="close" class="remodal-close"></button>
+  <h1>Remodal</h1>
+  <p>
+    Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.
+  </p>
+  <br>
+  <button ng-click="typeEmployer()" data-remodal-action="confirm" class="remodal-cancel">Nhà tuyển dụng</button>
+  <button ng-click="typeJobseeker()" data-remodal-action="confirm" class="remodal-confirm">Ứng viên</button>
+</div>

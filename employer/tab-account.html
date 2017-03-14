@@ -1,0 +1,37 @@
+<ion-view hide-nav-bar="true" >
+  <ion-header-bar align-title="center" class="bar-light">
+
+    <h1 ng-click="openPopover($event)" class="title">{{storeData.storeName}}
+    </h1>
+
+  </ion-header-bar>
+  <ion-content ng-init="init()">
+    <div class="profile-container">
+      <img ng-click="showProfile()" ng-src="{{storeData.photourl}}" class="profile-image" width="100">
+      <img
+        ui-sref="profile"
+        ng-src="img/edit.png"
+        class="profile-edit"
+        width="30">
+    </div>
+
+    <div class="text-center padding" style="margin-top:22px;">
+      <h4>Ionic</h4>
+
+    </div>
+
+    <ion-list class="text-center uppercase">
+      <ion-item class="color-red" style="top: 30px;" ui-sref="store">
+        Thay đổi thông tin tuyển dụng
+      </ion-item>
+      <ion-item class="color-red" style="top: 30px;" ui-sref="employer.setting">
+        Cài đặt
+      </ion-item>
+      <ion-item class="color-pastel-blue" style="top: 30px;" ui-sref="pricing">
+        Get Plus
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  </ion-content>
+</ion-view>
+
